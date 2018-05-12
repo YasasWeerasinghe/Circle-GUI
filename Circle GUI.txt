@@ -1,0 +1,49 @@
+package wrk1;
+
+import static java.lang.System.gc;
+import java.util.Scanner;
+import javafx.application.Application;
+import javafx.event.Event;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class Shape extends Application {
+    static Group root = new Group();
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        
+
+        Circle circle = new Circle();
+        circle.setCenterX(150.0f);
+        circle.setCenterY(150.0f);
+        System.out.println("Input Radius in cm: ");
+        double in = sc.nextDouble();
+        double r = in * 10;
+        circle.setRadius(r);
+        circle.setStroke(Color.BLUE);
+        circle.setFill(Color.RED);
+
+        Button button = new Button("Change color");
+        button.setOnAction((e) -> circle.setFill(Color.YELLOW));
+        
+
+        Scene scene = new Scene(root, 300, 300);
+        root.getChildren().addAll(circle, button);
+        primaryStage.setTitle("Circle");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    }
+
+}
